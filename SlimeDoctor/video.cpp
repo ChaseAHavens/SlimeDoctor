@@ -26,7 +26,8 @@ video::video(int h, int w, std::string title):
 			}
 			else
 			{
-				SDL_SetRenderDrawColor(theRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+				SDL_SetRenderDrawColor(theRenderer, 0x00, 0xFF, 0xFF, 0xFF);
+				SDL_RenderClear(theRenderer);
 				int imgFlags = IMG_INIT_PNG;
 				if (!(IMG_Init(imgFlags) & imgFlags))
 				{
@@ -89,7 +90,9 @@ void video::blit(int imageId, int x, int y)
 	}
 	else
 	{
+		SDL_SetTextureBlendMode(tmp->theImage, SDL_BLENDMODE_BLEND);
 		SDL_RenderCopy(theRenderer, tmp->theImage, NULL, &tmp->theRect);
+	
 		/*if (theScreen == NULL)
 		{
 			std::cout << "screen Error: " << SDL_GetError() << std::endl;
@@ -137,7 +140,7 @@ void video::blit(int imageId, int x, int y)
 void video::updateScreen()
 {
 	SDL_RenderPresent(theRenderer);
-	SDL_RenderClear(theRenderer);
+	//SDL_RenderClear(theRenderer);
 	//SDL_UpdateWindowSurface(theWindow);
 }
 image* video::imageById(int id)
