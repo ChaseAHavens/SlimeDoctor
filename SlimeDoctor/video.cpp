@@ -90,52 +90,13 @@ void video::blit(int imageId, int x, int y)
 	}
 	else
 	{
+		SDL_Rect tmpR = tmp->theRect;
+		tmpR.x = x;
+		tmpR.y = y;
 		SDL_SetTextureBlendMode(tmp->theImage, SDL_BLENDMODE_BLEND);
-		SDL_RenderCopy(theRenderer, tmp->theImage, NULL, &tmp->theRect);
+		SDL_RenderCopy(theRenderer, tmp->theImage, NULL, &tmpR);
+	}
 	
-		/*if (theScreen == NULL)
-		{
-			std::cout << "screen Error: " << SDL_GetError() << std::endl;
-		}
-		else
-		{
-			SDL_Rect tempR;
-			tempR.x = x;
-			tempR.y = y;
-			try {
-				SDL_BlitSurface(tmp, NULL, theScreen, &tempR);
-			}
-			catch (const char* msg)
-			{
-				std::cout << "exception: " << msg << std::endl;
-			}
-		}*/
-	}
-	/*SDL_Surface* tmp = surfById(imageId);
-	if (tmp == NULL) 
-	{
-		std::cout << "blit Error: " << SDL_GetError() << std::endl;
-	}
-	else
-	{
-		if (theScreen == NULL)
-		{
-			std::cout << "screen Error: " << SDL_GetError() << std::endl;
-		}
-		else
-		{
-			SDL_Rect tempR;
-			tempR.x = x;
-			tempR.y = y;
-			try {
-				SDL_BlitSurface(tmp, NULL, theScreen, &tempR);
-			}
-			catch (const char* msg)
-			{
-				std::cout << "exception: " << msg << std::endl;
-			}
-		}
-	}*/
 }
 void video::updateScreen()
 {
