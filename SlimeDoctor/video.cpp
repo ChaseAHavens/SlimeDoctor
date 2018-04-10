@@ -52,7 +52,7 @@ video::~video()
 int video::addImage(std::string file)
 {
 	int idNumber = -1;
-	SDL_Surface* formattedSurface = NULL;
+	SDL_Texture* formattedTexture = NULL;
 
 	SDL_Surface* loadingSurface = IMG_Load(file.c_str());
 	if (loadingSurface == NULL)
@@ -61,18 +61,19 @@ int video::addImage(std::string file)
 	}
 	else
 	{
-		formattedSurface = SDL_ConvertSurface(loadingSurface, theScreen->format, NULL);
-		if (formattedSurface == NULL)
+		//formattedSurface = SDL_ConvertSurface(loadingSurface, theScreen->format, NULL);
+		formattedTexture = SDL_CreateTextureFromSurface(theRenderer, loadingSurface);
+		if (formattedTexture == NULL)
 		{
 			std::cout << "Error Formatting image at " << file << "SDL_Error: " << SDL_GetError() << std::endl;
 		}
 		else
 		{
 			idNumber = nextIdNumber;
+			theImages.insert(std::pair<int, image>(idNumber, image(formattedTexture, loadingSurface->h, loadingSurface->w)));
 			SDL_FreeSurface(loadingSurface);
 			loadingSurface = NULL;
-			theImages.insert(std::pair<int, image>(idNumber, image(formattedSurface)));
-			formattedSurface = NULL;
+			formattedTexture = NULL;
 			nextIdNumber++;
 		}
 	}
@@ -81,7 +82,33 @@ int video::addImage(std::string file)
 }
 void video::blit(int imageId, int x, int y)
 {
-	SDL_Surface* tmp = surfById(imageId);
+	image* tmp = imageById(imageId);
+	if (tmp == NULL)
+	{
+		std::cout << "blit Error: " << SDL_GetError() << std::endl;
+	}
+	else
+	{
+		SDL_RenderCopy(theRenderer, tmp->theImage, NULL, &tmp->theRect);
+		/*if (theScreen == NULL)
+		{
+			std::cout << "screen Error: " << SDL_GetError() << std::endl;
+		}
+		else
+		{
+			SDL_Rect tempR;
+			tempR.x = x;
+			tempR.y = y;
+			try {
+				SDL_BlitSurface(tmp, NULL, theScreen, &tempR);
+			}
+			catch (const char* msg)
+			{
+				std::cout << "exception: " << msg << std::endl;
+			}
+		}*/
+	}
+	/*SDL_Surface* tmp = surfById(imageId);
 	if (tmp == NULL) 
 	{
 		std::cout << "blit Error: " << SDL_GetError() << std::endl;
@@ -105,17 +132,19 @@ void video::blit(int imageId, int x, int y)
 				std::cout << "exception: " << msg << std::endl;
 			}
 		}
-	}
+	}*/
 }
 void video::updateScreen()
 {
-	SDL_UpdateWindowSurface(theWindow);
+	SDL_RenderPresent(theRenderer);
+	SDL_RenderClear(theRenderer);
+	//SDL_UpdateWindowSurface(theWindow);
 }
-SDL_Surface* video::surfById(int id)
+image* video::imageById(int id)
 {
-	SDL_Surface* returnSurf = NULL;
+	image* returnImage = NULL;
 	if (theImages.find(id) != theImages.end()) { //check to see if id exists, checking with [] would create item with that key
-		returnSurf = theImages[id].theImage;
+		returnImage = &theImages[id];
 	}
 	/*	for (int i = 0; i < theImages.size();i++)
 	{
@@ -125,5 +154,5 @@ SDL_Surface* video::surfById(int id)
 			break;
 		}
 	}*/
-	return returnSurf;
+	return returnImage;
 }

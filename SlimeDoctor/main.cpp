@@ -31,6 +31,7 @@ int main(int argc, char* args[])
 	v->blit(slimeEyesOpenId, 100, 100);
 	v->updateScreen();
 	SDL_Delay(1000);
+	std::cout << "Reached end of program, type something and press enter to close" << std::endl;
 	char pause;
 	std::cin >> pause;
 

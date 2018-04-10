@@ -1,8 +1,13 @@
 #include "image.h"
 
-image::image(SDL_Surface* theI)
+image::image(SDL_Texture* theI, int h, int w):
+	theHeight(h), theWidth(w)
 {
 	setImage(theI);
+	theRect.h = h;
+	theRect.w = w;
+	theRect.x = 0;
+	theRect.y = 0;
 }
 
 image::~image()
@@ -12,9 +17,7 @@ image::~image()
 
 }
 
-void image::setImage(SDL_Surface* theI)
+void image::setImage(SDL_Texture* theI)
 {
 	theImage = theI;
-	theHeight = theImage->h;
-	theWidth = theImage->w;
 }
