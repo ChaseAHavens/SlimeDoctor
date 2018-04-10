@@ -21,6 +21,9 @@
     <ClCompile Include="video.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll">
@@ -31,5 +34,13 @@
     <ClInclude Include="video.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="image.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="preview.bmp">
+      <Filter>Source Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
