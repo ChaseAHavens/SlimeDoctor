@@ -8,7 +8,7 @@ image::image(SDL_Surface* theI, int id):
 
 image::~image()
 {
-	SDL_FreeSurface(theImage);
+	//SDL_FreeSurface(theImage); //was deleting surface after copys
 	theImage = NULL;
 
 }

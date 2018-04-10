@@ -78,7 +78,7 @@ void video::blit(int imageId, int x, int y)
 		else
 		{
 			try {
-				SDL_BlitSurface(tmp, NULL, theScreen, NULL); //looks like cant access format at this point?
+				SDL_BlitSurface(tmp, NULL, theScreen, NULL);
 			}
 			catch (const char* msg)
 			{
