@@ -1,10 +1,13 @@
 #pragma once
 #include <SDL.h>
+#include <SDL_image.h>
 #include <stdio.h>
 #include <iostream>
 #include <string>
 #include "image.h"
 #include <vector>
+#include <map>
+
 
 
 class video
@@ -14,6 +17,7 @@ public:
 		~video();
 
 	SDL_Surface* theScreen;
+	SDL_Renderer* theRenderer;
 	SDL_Window* theWindow;
 
 	int addImage(std::string file);
@@ -21,7 +25,7 @@ public:
 
 	void blit(int imageId, int x, int y);
 
-	std::vector <image> theImages;
+	std::map <int, image> theImages;
 	void updateScreen();
 
 	static int nextIdNumber;

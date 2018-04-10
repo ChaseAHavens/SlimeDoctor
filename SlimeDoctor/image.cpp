@@ -1,7 +1,6 @@
 #include "image.h"
 
-image::image(SDL_Surface* theI, int id):
-	 idNumber(id)
+image::image(SDL_Surface* theI)
 {
 	setImage(theI);
 }

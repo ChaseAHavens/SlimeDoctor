@@ -29,6 +29,24 @@
     <None Include="SDL2.dll">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="libjpeg-9.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="libpng16-16.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="libtiff-5.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="libwebp-7.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="SDL2_image.dll">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="zlib1.dll">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="video.h">
@@ -41,6 +59,36 @@
   <ItemGroup>
     <Image Include="preview.bmp">
       <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="preview2.bmp">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="preview3.bmp">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="images\table.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\masks\slimeEyesBlink0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\masks\slimeEyesBlink1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\masks\slimeEyesOpen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\masks\slimeEyesSad.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\masks\slimeEyesShine.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\masks\slimeInnerFill.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\masks\slimeOuterShell.png">
+      <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
 </Project>
