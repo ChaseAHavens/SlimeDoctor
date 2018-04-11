@@ -97,7 +97,7 @@ int video::generateFromMask(std::string file, SDL_Color col)
 	tempR.w = mask->w;
 	tempR.x = 0;
 	tempR.y = 0;
-	SDL_FillRect(loadingSurface, &tempR, SDL_MapRGB(mask->format, col.r, col.g, col.b));
+	SDL_FillRect(loadingSurface, &tempR, SDL_MapRGBA(mask->format, col.r, col.g, col.b, col.a));
 	if (loadingSurface == NULL)
 	{
 		std::cout << "Error Loading Image at " << file << " SDL_Error: " << IMG_GetError() << std::endl;

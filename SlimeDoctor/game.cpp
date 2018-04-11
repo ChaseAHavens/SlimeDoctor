@@ -40,20 +40,28 @@ void game::updateScreen()
 {
 	///todo: rewrite to render in order of z depth
 	SDL_RenderClear(v->theRenderer);
+
+
+	/*SDL_RenderClear(v->theRenderer);
+	int entityCount = e.e.count;
+	int currentEntity = 
+	//*/
+	/*
 	for (std::pair<std::string,entity> p : e.e)
 	{
 		int imageId = p.second.imageId;
 		v->blit(imageId, p.second.getX(), p.second.getY());
 
 	}
+	//*/
 	v->updateScreen();
 
 }
 void game::createEntity(std::string name) 
 {
-	if ( eList.find(name) != eList.end())
+	//if ( eList.find(name) != eList.end())
 	{
-		eList[name];
+		//eList[name];
 	}
 
 }
@@ -102,27 +110,53 @@ void game::makeGAMEEntities()
 	tmp = v->generateFromMask("images/mask/slimeShell.png", tempCol);
 	tmpI = v->imageById(tmp);
 	e.makeEntity("shell", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 8);
-	e.e["shell"].isMask = true;
-	e.e["shell"].theColor = tempCol;
+	e.e.at(e.getVecPos("shell")).isMask = true;
+	e.e.at(e.getVecPos("shell")).theColor = tempCol;
 
+	//e.get("shell").isMask = true;
+	//e.e["shell"].isMask = true;
+	
 	//inner
-	tempCol = { 20, 222, 20, 20 };
+	tempCol = { 20, 222, 20, 60 };
 	tmp = v->generateFromMask("images/mask/slimeInner.png", tempCol);
 	tmpI = v->imageById(tmp);
 	e.makeEntity("inner", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 8);
-	e.e["inner"].isMask = true;
-	e.e["inner"].theColor = tempCol;
+	e.e.at(e.getVecPos("inner")).isMask = true;
+	e.e.at(e.getVecPos("inner")).theColor = tempCol;
+	//e.e["inner"].isMask = true; ///todo: add better methods for accessing by name, if doesnt exist this method will create
+	//e.e["inner"].theColor = tempCol;
 
 
 	//eyesOpen
+	tempCol = { 255, 255, 255, 200 };
+	tmp = v->generateFromMask("images/masks/slimeEyesOpen.png", tempCol);
+	tmpI = v->imageById(tmp);
+	e.makeEntity("eyes", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 8);
+	e.e.at(e.getVecPos("eyes")).isMask = true;
+	e.e.at(e.getVecPos("eyes")).theColor = tempCol;
+
+	//e.e["eyes"].isMask = true;
+	//e.e["eyes"].theColor = tempCol;
+	
+	/*
 	tmp = v->addImage("images/masks/slimeEyesOpen.png");
 	tmpI = v->imageById(tmp);
 	e.makeEntity("eyes", tmp, tmpI->theRect.x, tmpI->theRect.y, tmpI->theRect.h, tmpI->theRect.w, 8);
-
+	*/
 	//shine
+	tempCol = { 0, 0, 0, 150 };
+	tmp = v->generateFromMask("images/masks/slimeShine.png", tempCol);
+	tmpI = v->imageById(tmp);
+	e.makeEntity("shine", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 8);
+	e.e.at(e.getVecPos("shine")).isMask = true;
+	e.e.at(e.getVecPos("shine")).theColor = tempCol;
+	//e.e["shine"].isMask = true;
+	//e.e["shine"].theColor = tempCol;
+	/*
 	tmp = v->addImage("images/masks/slimeShine.png");
 	tmpI = v->imageById(tmp);
 	e.makeEntity("shine", tmp, tmpI->theRect.x, tmpI->theRect.y, tmpI->theRect.h, tmpI->theRect.w, 8);
+//*/
 }
 void game::input()
 {

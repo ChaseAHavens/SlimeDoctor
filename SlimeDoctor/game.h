@@ -5,7 +5,7 @@
 #include "entities.h"
 #include "image.h"
 #include "timer.h"
-#include <map>
+#include <vector>
 #include <string>
 
 class game
@@ -44,7 +44,7 @@ private:
 
 	SDL_Event event;
 	entities e;
-	std::map<std::string, entity> eList;
+	//std::vector<entity> eList;
 	gameMode g;
 	bool loadImages();
 	timer deltaTimer;

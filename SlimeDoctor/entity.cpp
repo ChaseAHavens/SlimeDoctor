@@ -1,7 +1,17 @@
 #include "entity.h"
 
-entity::entity()
+entity::entity(std::string name):
+	theName(name)
 {
+	isMask = false;
+	theColor = { 0, 0, 0, 255 };
+}
+entity::entity(std::string name, int id , int x, int y, int h, int w, int z) :
+	theName(name), imageId(id)
+{
+	setPos(x, y);
+	setSize(h, w);
+	setZ(z);
 	isMask = false;
 	theColor = { 0, 0, 0, 255 };
 }

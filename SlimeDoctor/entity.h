@@ -5,7 +5,9 @@
 class entity
 {
 public:
-	entity();
+	entity(std::string name);
+	entity(std::string name, int id, int x, int y, int h, int w, int z);
+	entity() {};
 	~entity();
 
 
@@ -30,12 +32,12 @@ public:
 	int getY() { return tx.y; }
 	int getH() { return tx.h; }
 	int getW() { return tx.w; }
-
+	std::string getName() {	return theName;}
 	static SDL_Rect posAScaleB(SDL_Rect a, SDL_Rect b);
 
 private:
 	int theZ; //lower = closer to surface
-
+	std::string theName;
 
 
 };
