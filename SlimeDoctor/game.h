@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include "video.h"
 #include "entity.h"
+#include "entities.h"
 #include "image.h"
 #include "timer.h"
 #include <map>
@@ -34,6 +35,9 @@ public:
 
 
 private:
+	void makeSTARTUPEntities();
+
+	entities e;
 	std::map<std::string, entity> eList;
 	gameMode g;
 	bool loadImages();

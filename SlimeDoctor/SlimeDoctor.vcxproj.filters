@@ -33,6 +33,9 @@
     <ClCompile Include="timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="entities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll">
@@ -73,6 +76,9 @@
     <ClInclude Include="timer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="entities.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="preview.bmp">
@@ -106,6 +112,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="images\masks\slimeOuterShell.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\splashPage.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

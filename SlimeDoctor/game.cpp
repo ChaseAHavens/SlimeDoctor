@@ -14,9 +14,11 @@ void game::step(float delta)
 	switch (g)
 	{
 	case STARTUP:
-
+		makeSTARTUPEntities();
+		g = SPLASH_SCREEN;
 		break;
 	case SPLASH_SCREEN:
+		updateScreen();
 		break;
 	case GAME_LOAD_SCENE_1:
 		break;
@@ -27,9 +29,17 @@ void game::step(float delta)
 }
 void game::updateScreen()
 {
+	SDL_RenderClear(v->theRenderer);
+	for (std::pair<std::string,entity> p : e.e)
+	{
+		int imageId = p.second.imageId;
+		v->blit(imageId, p.second.getX(), p.second.getY());
+
+	}
+	v->updateScreen();
 
 }
-void game::createEntity(std::string name, ) 
+void game::createEntity(std::string name) 
 {
 	if ( eList.find(name) != eList.end())
 	{
@@ -57,5 +67,11 @@ float game::deltaTime()
 }
 bool game::loadImages()
 {
-
+	return false;
+}
+void game::makeSTARTUPEntities()
+{
+	int tmp = v->addImage("images/splashPage.png");
+	image* tmpI = v->imageById(tmp);
+	e.makeEntity("splashPage", tmp, tmpI->theRect.x, tmpI->theRect.y, tmpI->theRect.h, tmpI->theRect.w);
 }

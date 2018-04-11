@@ -11,7 +11,7 @@ int main(int argc, char* args[])
 	while (1)
 	{
 		g->step(g->deltaTime());
-		g->updateScreen();
+		//g->updateScreen();
 
 	}
 	
