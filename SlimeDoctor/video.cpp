@@ -81,6 +81,59 @@ int video::addImage(std::string file)
 
 	return idNumber;
 }
+int video::generateFromMask(std::string file, SDL_Color col)
+{
+	int idNumber = -1;
+	SDL_Texture* formattedTexture = NULL;
+
+	SDL_Surface* mask = IMG_Load(file.c_str());
+	if (mask == NULL)
+	{
+		std::cout << "Error Loading Image at " << file << " SDL_Error: " << IMG_GetError() << std::endl;
+	}
+	SDL_Surface* loadingSurface = SDL_CreateRGBSurfaceWithFormat(0, mask->w, mask->h, mask->format->BitsPerPixel, mask->format->format);
+	SDL_Rect tempR;
+	tempR.h = mask->h;
+	tempR.w = mask->w;
+	tempR.x = 0;
+	tempR.y = 0;
+	SDL_FillRect(loadingSurface, &tempR, SDL_MapRGB(mask->format, col.r, col.g, col.b));
+	if (loadingSurface == NULL)
+	{
+		std::cout << "Error Loading Image at " << file << " SDL_Error: " << IMG_GetError() << std::endl;
+	}
+	SDL_BlitSurface(mask, NULL, loadingSurface, NULL);
+	if (loadingSurface == NULL)
+	{
+		std::cout << "Error Loading Image at " << file << " SDL_Error: " << IMG_GetError() << std::endl;
+	}
+	SDL_SetColorKey(loadingSurface, SDL_TRUE, SDL_MapRGB(mask->format, 0xFF, 0, 0xFF));
+
+	if (loadingSurface == NULL)
+	{
+		std::cout << "Error Loading Image at " << file << " SDL_Error: " << IMG_GetError() << std::endl;
+	}
+	else
+	{
+		//formattedSurface = SDL_ConvertSurface(loadingSurface, theScreen->format, NULL);
+		formattedTexture = SDL_CreateTextureFromSurface(theRenderer, loadingSurface);
+		if (formattedTexture == NULL)
+		{
+			std::cout << "Error Formatting image at " << file << "SDL_Error: " << SDL_GetError() << std::endl;
+		}
+		else
+		{
+			idNumber = nextIdNumber;
+			theImages.insert(std::pair<int, image>(idNumber, image(formattedTexture, loadingSurface->h, loadingSurface->w)));
+			SDL_FreeSurface(loadingSurface);
+			loadingSurface = NULL;
+			formattedTexture = NULL;
+			nextIdNumber++;
+		}
+	}
+
+	return idNumber;
+}
 void video::blit(int imageId, int x, int y)
 {
 	image* tmp = imageById(imageId);

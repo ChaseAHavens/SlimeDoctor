@@ -21,6 +21,7 @@ public:
 	SDL_Window* theWindow;
 
 	int addImage(std::string file);
+	int generateFromMask(std::string file, SDL_Color col);
 	image* imageById(int id);
 
 	void blit(int imageId, int x, int y);

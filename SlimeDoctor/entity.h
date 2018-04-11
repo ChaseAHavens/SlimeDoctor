@@ -13,6 +13,9 @@ public:
 	bool isVisable;
 	int imageId;
 
+	bool isMask;
+	SDL_Color theColor;
+
 	SDL_Rect tx;
 
 	

@@ -1,7 +1,10 @@
 #include "entity.h"
 
 entity::entity()
-{}
+{
+	isMask = false;
+	theColor = { 0, 0, 0, 255 };
+}
 entity::~entity()
 {}
 

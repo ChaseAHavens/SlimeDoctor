@@ -117,5 +117,26 @@
     <Image Include="images\splashPage.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="images\mask\slimeEyes.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\mask\slimeEyes1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\mask\slimeEyes2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\mask\slimeEyes3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\mask\slimeInner.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\mask\slimeShell.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\mask\slimeShine.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -91,9 +91,13 @@ void game::makeGAMEEntities()
 	tmp = v->addImage("images/table.png");
 	tmpI = v->imageById(tmp);
 	e.makeEntity("table", tmp, tmpI->theRect.x, tmpI->theRect.y, tmpI->theRect.h, tmpI->theRect.w, 9);
-	tmp = v->addImage("images/masks/slimeOuterShell.png");
+	//tmp = v->addImage("images/masks/slimeOuterShell.png");
+	SDL_Color tempCol = { 10, 222, 10, 199 };
+	tmp = v->generateFromMask("images/mask/slimeShell.png", tempCol);
 	tmpI = v->imageById(tmp);
 	e.makeEntity("shell", tmp, tmpI->theRect.x, tmpI->theRect.y, tmpI->theRect.h, tmpI->theRect.w, 8);
+	e.e["shell"].isMask = true;
+	e.e["shell"].theColor = tempCol;
 	tmp = v->addImage("images/masks/slimeEyesOpen.png");
 	tmpI = v->imageById(tmp);
 	e.makeEntity("eyes", tmp, tmpI->theRect.x, tmpI->theRect.y, tmpI->theRect.h, tmpI->theRect.w, 8);

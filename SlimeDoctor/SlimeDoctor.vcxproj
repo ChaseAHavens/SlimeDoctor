@@ -155,6 +155,13 @@
     <Image Include="images\masks\slimeEyesShine.png" />
     <Image Include="images\masks\slimeInnerFill.png" />
     <Image Include="images\masks\slimeOuterShell.png" />
+    <Image Include="images\mask\slimeEyes.png" />
+    <Image Include="images\mask\slimeEyes1.png" />
+    <Image Include="images\mask\slimeEyes2.png" />
+    <Image Include="images\mask\slimeEyes3.png" />
+    <Image Include="images\mask\slimeInner.png" />
+    <Image Include="images\mask\slimeShell.png" />
+    <Image Include="images\mask\slimeShine.png" />
     <Image Include="images\splashPage.png" />
     <Image Include="images\table.png" />
     <Image Include="preview.bmp" />
