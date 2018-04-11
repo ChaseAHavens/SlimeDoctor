@@ -1,12 +1,14 @@
 #pragma once
 #include <SDL.h>
-
+#include <string>
 
 class entity
 {
 public:
 	entity();
 	~entity();
+
+
 
 	bool isVisable;
 	int imageId;
