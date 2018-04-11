@@ -38,6 +38,7 @@ void game::step(float delta)
 }
 void game::updateScreen()
 {
+	///todo: rewrite to render in order of z depth
 	SDL_RenderClear(v->theRenderer);
 	for (std::pair<std::string,entity> p : e.e)
 	{
@@ -88,19 +89,37 @@ void game::makeGAMEEntities()
 {
 	int tmp;
 	image* tmpI;
+	SDL_Color tempCol;
+
+	//table
 	tmp = v->addImage("images/table.png");
 	tmpI = v->imageById(tmp);
 	e.makeEntity("table", tmp, tmpI->theRect.x, tmpI->theRect.y, tmpI->theRect.h, tmpI->theRect.w, 9);
 	//tmp = v->addImage("images/masks/slimeOuterShell.png");
-	SDL_Color tempCol = { 10, 222, 10, 199 };
+
+	//shell 
+	tempCol = { 10, 222, 10, 199 };
 	tmp = v->generateFromMask("images/mask/slimeShell.png", tempCol);
 	tmpI = v->imageById(tmp);
-	e.makeEntity("shell", tmp, tmpI->theRect.x, tmpI->theRect.y, tmpI->theRect.h, tmpI->theRect.w, 8);
+	e.makeEntity("shell", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 8);
 	e.e["shell"].isMask = true;
 	e.e["shell"].theColor = tempCol;
+
+	//inner
+	tempCol = { 20, 222, 20, 20 };
+	tmp = v->generateFromMask("images/mask/slimeInner.png", tempCol);
+	tmpI = v->imageById(tmp);
+	e.makeEntity("inner", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 8);
+	e.e["inner"].isMask = true;
+	e.e["inner"].theColor = tempCol;
+
+
+	//eyesOpen
 	tmp = v->addImage("images/masks/slimeEyesOpen.png");
 	tmpI = v->imageById(tmp);
 	e.makeEntity("eyes", tmp, tmpI->theRect.x, tmpI->theRect.y, tmpI->theRect.h, tmpI->theRect.w, 8);
+
+	//shine
 	tmp = v->addImage("images/masks/slimeShine.png");
 	tmpI = v->imageById(tmp);
 	e.makeEntity("shine", tmp, tmpI->theRect.x, tmpI->theRect.y, tmpI->theRect.h, tmpI->theRect.w, 8);

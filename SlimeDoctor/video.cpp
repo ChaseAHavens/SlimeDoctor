@@ -116,6 +116,8 @@ int video::generateFromMask(std::string file, SDL_Color col)
 	else
 	{
 		//formattedSurface = SDL_ConvertSurface(loadingSurface, theScreen->format, NULL);
+		SDL_SetTextureBlendMode(formattedTexture, SDL_BLENDMODE_BLEND);
+		SDL_SetTextureAlphaMod(formattedTexture, col.a);
 		formattedTexture = SDL_CreateTextureFromSurface(theRenderer, loadingSurface);
 		if (formattedTexture == NULL)
 		{
