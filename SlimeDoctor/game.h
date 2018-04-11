@@ -30,13 +30,19 @@ public:
 		STARTUP,
 		SPLASH_SCREEN,
 		GAME_LOAD_SCENE_1,
-		GAME_SCENE_1
+		GAME_SCENE_1,
+
+		QUIT
 	};
 
 
+	void input();
+	bool quit;
 private:
 	void makeSTARTUPEntities();
+	void makeGAMEEntities();
 
+	SDL_Event event;
 	entities e;
 	std::map<std::string, entity> eList;
 	gameMode g;

@@ -8,7 +8,7 @@ int main(int argc, char* args[])
 {
 	game* g = new game;
 	g->v = new video(1600, 900, "Slime Game");
-	while (1)
+	while (!g->quit)
 	{
 		g->step(g->deltaTime());
 		//g->updateScreen();

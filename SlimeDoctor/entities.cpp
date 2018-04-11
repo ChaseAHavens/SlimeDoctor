@@ -5,13 +5,14 @@ entities::entities()
 entities::~entities()
 {}
 
-void entities::makeEntity(std::string name, int imageId, int x, int y, int h, int w)
+void entities::makeEntity(std::string name, int imageId, int x, int y, int h, int w, int z)
 {
 	if (e.find(name) == e.end())
 	{
 		e[name].setImageId(imageId);
 		e[name].setPos(x, y);
 		e[name].setSize(h, w);
+		e[name].setZ(z);
 	}
 }
 void entities::deleteEntity(std::string name)

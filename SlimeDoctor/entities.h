@@ -9,7 +9,7 @@ public:
 	entities();
 	~entities();
 
-	void makeEntity(std::string name, int imageId, int x, int y, int h, int w);
+	void makeEntity(std::string name, int imageId, int x, int y, int h, int w, int z);
 	void deleteEntity(std::string name);
 
 	void clearAllEntities();
