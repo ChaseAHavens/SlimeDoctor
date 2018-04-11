@@ -113,48 +113,48 @@ void game::makeGAMEEntities()
 	tempCol = { 10, 222, 10, 199 };
 	tmp = v->generateFromMask("images/mask/slimeShell.png", tempCol);
 	tmpI = v->imageById(tmp);
-	e.makeEntity("shell", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 8);
+	e.makeEntity("shell", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 7);
 	e.e.at(e.getVecPos("shell")).isMask = true;
 	e.e.at(e.getVecPos("shell")).theColor = tempCol;
 
 	//e.get("shell").isMask = true;
 	//e.e["shell"].isMask = true;
 	
-	//inner
+	///inner
 	tempCol = { 20, 222, 20, 60 };
 	tmp = v->generateFromMask("images/mask/slimeInner.png", tempCol);
 	tmpI = v->imageById(tmp);
 	e.makeEntity("inner", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 8);
 	e.e.at(e.getVecPos("inner")).isMask = true;
 	e.e.at(e.getVecPos("inner")).theColor = tempCol;
-	//e.e["inner"].isMask = true; ///todo: add better methods for accessing by name, if doesnt exist this method will create
+	//*/ //e.e["inner"].isMask = true; ///todo: add better methods for accessing by name, if doesnt exist this method will create
 	//e.e["inner"].theColor = tempCol;
 
 
-	//eyesOpen
-	tempCol = { 255, 255, 255, 200 };
-	tmp = v->generateFromMask("images/masks/slimeEyesOpen.png", tempCol);
+	///eyesOpen
+	tempCol = { 10, 25, 10, 200 };
+	tmp = v->generateFromMask("images/mask/slimeEyes.png", tempCol);
 	tmpI = v->imageById(tmp);
-	e.makeEntity("eyes", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 8);
+	e.makeEntity("eyes", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 6);
 	e.e.at(e.getVecPos("eyes")).isMask = true;
 	e.e.at(e.getVecPos("eyes")).theColor = tempCol;
 
-	//e.e["eyes"].isMask = true;
+	// */ //e.e["eyes"].isMask = true;
 	//e.e["eyes"].theColor = tempCol;
 	
 	/*
-	tmp = v->addImage("images/masks/slimeEyesOpen.png");
+	tmp = v->addImage("images/mask/slimeEyesOpen.png");
 	tmpI = v->imageById(tmp);
 	e.makeEntity("eyes", tmp, tmpI->theRect.x, tmpI->theRect.y, tmpI->theRect.h, tmpI->theRect.w, 8);
 	*/
-	//shine
-	tempCol = { 0, 0, 0, 150 };
-	tmp = v->generateFromMask("images/masks/slimeShine.png", tempCol);
+	///shine
+	tempCol = { 200, 255, 200, 150 };
+	tmp = v->generateFromMask("images/mask/slimeShine.png", tempCol);
 	tmpI = v->imageById(tmp);
-	e.makeEntity("shine", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 8);
+	e.makeEntity("shine", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 6);
 	e.e.at(e.getVecPos("shine")).isMask = true;
 	e.e.at(e.getVecPos("shine")).theColor = tempCol;
-	//e.e["shine"].isMask = true;
+	//*/ //e.e["shine"].isMask = true;
 	//e.e["shine"].theColor = tempCol;
 	/*
 	tmp = v->addImage("images/masks/slimeShine.png");
