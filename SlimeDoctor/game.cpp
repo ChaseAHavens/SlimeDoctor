@@ -40,11 +40,15 @@ void game::updateScreen()
 {
 	///todo: rewrite to render in order of z depth
 	SDL_RenderClear(v->theRenderer);
-
-
-	/*SDL_RenderClear(v->theRenderer);
-	int entityCount = e.e.count;
-	int currentEntity = 
+	int entCount = e.e.size();
+	int curEnt = 0;
+	while (curEnt < entCount)
+	{
+		int imageId = e.e.at(curEnt).getImageId(); //p.second.imageId;
+		v->blit(imageId, e.e.at(curEnt).getX(), e.e.at(curEnt).getY());
+		curEnt++;
+	}
+	v->updateScreen();
 	//*/
 	/*
 	for (std::pair<std::string,entity> p : e.e)
@@ -54,7 +58,7 @@ void game::updateScreen()
 
 	}
 	//*/
-	v->updateScreen();
+
 
 }
 void game::createEntity(std::string name) 

@@ -16,6 +16,7 @@ void entities::makeEntity(std::string name, int id, int x, int y, int h, int w, 
 	{
 		e.push_back(entity(name, id, x, y, h, w, z));
 	}
+	sortByZ();
 	/*
 	if (e.find(name) == e.end())
 	{
@@ -113,5 +114,5 @@ bool entities::nameExists(std::string name)
 }
 void entities::sortByZ() 
 {
-	std::sort(e.begin(), e.end(), [](int a, int b) { return a > b;} );
+	std::sort(e.begin(), e.end(), [](entity &a, entity &b) { return a.getZ() > b.getZ();} );
 }
