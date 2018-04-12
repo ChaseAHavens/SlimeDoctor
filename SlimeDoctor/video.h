@@ -24,7 +24,7 @@ public:
 	int generateFromMask(std::string file, SDL_Color col);
 	image* imageById(int id);
 
-	void blit(int imageId, int x, int y);
+	void blit(int imageId, int x, int y, int h, int w);
 
 	std::map <int, image> theImages;
 	void updateScreen();

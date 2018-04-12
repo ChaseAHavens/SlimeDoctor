@@ -136,7 +136,7 @@ int video::generateFromMask(std::string file, SDL_Color col)
 
 	return idNumber;
 }
-void video::blit(int imageId, int x, int y)
+void video::blit(int imageId, int x, int y, int h, int w)
 {
 	image* tmp = imageById(imageId);
 	if (tmp == NULL)
@@ -148,6 +148,8 @@ void video::blit(int imageId, int x, int y)
 		SDL_Rect tmpR = tmp->theRect;
 		tmpR.x = x;
 		tmpR.y = y;
+		tmpR.h = h;
+		tmpR.w = w;
 		SDL_SetTextureBlendMode(tmp->theImage, SDL_BLENDMODE_BLEND);
 		SDL_RenderCopy(theRenderer, tmp->theImage, NULL, &tmpR);
 	}

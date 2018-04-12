@@ -125,6 +125,7 @@
     <ClCompile Include="entities.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="gameplayScene.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="timer.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="entities.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="gameplayScene.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="video.h" />

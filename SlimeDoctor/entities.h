@@ -18,7 +18,7 @@ public:
 
 	void clearAllEntities();
 
-	entity get(std::string name);
+	entity* get(std::string name);
 	int getVecPos(std::string name);
 	void sortByZ();
 	std::vector<entity> e;

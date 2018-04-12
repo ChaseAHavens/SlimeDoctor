@@ -7,7 +7,10 @@
 #include "timer.h"
 #include <vector>
 #include <string>
+#include "gameplayScene.h"
 
+
+///TODO: move video class into game class to be able to easily change resolution
 class game
 {
 public:
@@ -41,6 +44,8 @@ public:
 private:
 	void makeSTARTUPEntities();
 	void makeGAMEEntities();
+
+	gameplayScene gameplay;
 
 	SDL_Event event;
 	entities e;

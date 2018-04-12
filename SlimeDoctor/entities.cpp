@@ -50,19 +50,13 @@ void entities::clearAllEntities()
 	e.clear();
 }
 
-entity entities::get(std::string name)
+entity* entities::get(std::string name)
 {
-	entity ret = entity();//bad way to do this, returning empty when none exists
-	if (nameExists(name))
-	{
-		ret = e.at(getVecPos(name));
-
-	}
-	else 
+	if (!nameExists(name))
 	{
 		std::cout << "Trying to get entity by name that doesnt exist" << std::endl;
 	}
-	return ret;
+	return &e.at(getVecPos(name));
 	/*
 	if (e.find(name) != e.end())
 	{

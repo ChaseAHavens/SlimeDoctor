@@ -19,15 +19,17 @@ void game::step(float delta)
 		break;
 	case SPLASH_SCREEN:
 		updateScreen();
-		SDL_Delay(2000);
+		SDL_Delay(200);
 		g = GAME_LOAD_SCENE_1;
 		break;
 	case GAME_LOAD_SCENE_1:
 		e.clearAllEntities();
 		makeGAMEEntities();
+		gameplay.setup();
 		g = GAME_SCENE_1;
 		break;
 	case GAME_SCENE_1:
+		gameplay.step(delta);
 		updateScreen();
 		input();
 		break;
@@ -45,7 +47,7 @@ void game::updateScreen()
 	while (curEnt < entCount)
 	{
 		int imageId = e.e.at(curEnt).getImageId(); //p.second.imageId;
-		v->blit(imageId, e.e.at(curEnt).getX(), e.e.at(curEnt).getY());
+		v->blit(imageId, e.e.at(curEnt).getX(), e.e.at(curEnt).getY(), e.e.at(curEnt).getH(), e.e.at(curEnt).getW());
 		curEnt++;
 	}
 	v->updateScreen();
@@ -99,6 +101,8 @@ void game::makeSTARTUPEntities()
 }
 void game::makeGAMEEntities()
 {
+	gameplay.getE(&e);
+
 	int tmp;
 	image* tmpI;
 	SDL_Color tempCol;
