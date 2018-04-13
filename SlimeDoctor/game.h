@@ -20,8 +20,6 @@ public:
 	void step(float delta);
 	void updateScreen();
 
-	void maxFpsDelay();
-
 	video* v;
 
 	float deltaTime();
@@ -51,9 +49,7 @@ private:
 	entities e;
 	//std::vector<entity> eList;
 	gameMode g;
-	bool loadImages();
 	timer deltaTimer;
-	timer frameCap;
 	const float tpf;
 	const Uint32 fps;
 };

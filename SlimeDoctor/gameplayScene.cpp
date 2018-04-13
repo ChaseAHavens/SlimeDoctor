@@ -42,19 +42,20 @@ float gameplayScene::slimeBounceW()
 
 void gameplayScene::setupSlime()
 {
-	shell =		e->get("shell");
-	inner =		e->get("inner");
-	eyes =		e->get("eyes");
-	eyes1 =		e->get("eyes1");
-	eyes2 =		e->get("eyes2");
-	eyesSad =	e->get("eyesSad");
-	shine =		e->get("shine");
-	table =		e->get("table");
+	
+	shell =		&e->get("shell");
+	inner =		&e->get("inner");
+	eyes =		&e->get("eyes");
+	eyes1 =		&e->get("eyes1");
+	eyes2 =		&e->get("eyes2");
+	eyesSad =	&e->get("eyesSad");
+	shine =		&e->get("shine");
+	table =		&e->get("table");
 
-	slimeX = shell->getX();
-	slimeY = shell->getY();
-	slimeH = shell->getH();
-	slimeW = shell->getW();
+	slimeX = (float)shell->getX();
+	slimeY = (float)shell->getY();
+	slimeH = (float)shell->getH();
+	slimeW = (float)shell->getW();
 }
 void gameplayScene::animateBounce()
 {
@@ -115,31 +116,31 @@ void gameplayScene::slimeChangeEyes()
 	switch (eS)
 	{
 	case OPEN:
-		eyes->		isVisable = true;
-		eyes1->		isVisable = false;
-		eyes2->		isVisable = false;
-		eyesSad->	isVisable = false;
+		eyes->		setVisable(true);
+		eyes1->		setVisable(false);
+		eyes2->		setVisable(false);
+		eyesSad->	setVisable(false);
 
 		break;
 	case BLINK1:
-		eyes->		isVisable = false;
-		eyes1->		isVisable = true;
-		eyes2->		isVisable = false;
-		eyesSad->	isVisable = false;
+		eyes->		setVisable(false);
+		eyes1->		setVisable(true);
+		eyes2->		setVisable(false);
+		eyesSad->	setVisable(false);
 
 		break;
 	case BLINK2:
-		eyes->		isVisable = false;
-		eyes1->		isVisable = false;
-		eyes2->		isVisable = true;
-		eyesSad->	isVisable = false;
+		eyes->		setVisable(false);
+		eyes1->		setVisable(false);
+		eyes2->		setVisable(true);
+		eyesSad->	setVisable(false);
 
 		break;
 	case SAD:
-		eyes->		isVisable = false;
-		eyes1->		isVisable = false;
-		eyes2->		isVisable = false;
-		eyesSad->	isVisable = true;
+		eyes->		setVisable(false);
+		eyes1->		setVisable(false);
+		eyes2->		setVisable(false);
+		eyesSad->	setVisable(true);
 		break;
 	}
 

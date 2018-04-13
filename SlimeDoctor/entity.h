@@ -12,6 +12,31 @@ public:
 
 
 
+
+
+	
+	entity& setPos(int x, int y);
+	entity& setSize(int h, int w);
+	entity& setZ(int z);
+	entity& setVisable(bool vis);
+	entity& setImageId(int id);
+	entity& setMask(bool mask);
+	entity& setColor(SDL_Color col);
+	
+	int getImageId() { return imageId; }
+	int getZ() { return theZ;}
+	int getX() { return tx.x; }
+	int getY() { return tx.y; }
+	int getH() { return tx.h; }
+	int getW() { return tx.w; }
+	bool getVis() { return isVisable; }
+	bool getMask() { return isMask; }
+	std::string getName() {	return theName;}
+	static SDL_Rect posAScaleB(SDL_Rect a, SDL_Rect b);
+
+private:
+	int theZ; //lower = closer to surface
+	std::string theName;
 	bool isVisable;
 	int imageId;
 
@@ -19,25 +44,5 @@ public:
 	SDL_Color theColor;
 
 	SDL_Rect tx;
-
-	
-	void setPos(int x, int y);
-	void setSize(int h, int w);
-	void setZ(int z) { theZ = z;}
-
-	void setImageId(int id) { imageId = id; }
-	int getImageId() { return imageId; }
-	int getZ() { return theZ;}
-	int getX() { return tx.x; }
-	int getY() { return tx.y; }
-	int getH() { return tx.h; }
-	int getW() { return tx.w; }
-	std::string getName() {	return theName;}
-	static SDL_Rect posAScaleB(SDL_Rect a, SDL_Rect b);
-
-private:
-	int theZ; //lower = closer to surface
-	std::string theName;
-
 
 };
