@@ -19,10 +19,21 @@ public:
 	
 	float slimeBounceH();
 	float slimeBounceW();
-	timer slimeBounce;
+	timer slimeTime;
 	int slimeBounceAmount;
+	int slimeBlinkDelay;
+
+	enum eyesState
+	{
+		OPEN,
+		BLINK1,
+		BLINK2,
+		SAD
+	};
 
 private:
+	eyesState eS;
+
 	entities * e;
 
 	float slimeY;
@@ -35,7 +46,15 @@ private:
 	entity* shell;
 	entity* inner;
 	entity* eyes;
+	entity* eyes1;
+	entity* eyes2;
+	entity* eyesSad;
 	entity* shine;
 	entity* table;
 
+
+	void setupSlime();
+	void animateBounce();
+	void animateBlink();
+	void slimeChangeEyes();
 };

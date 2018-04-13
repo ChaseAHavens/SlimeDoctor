@@ -47,7 +47,9 @@ void game::updateScreen()
 	while (curEnt < entCount)
 	{
 		int imageId = e.e.at(curEnt).getImageId(); //p.second.imageId;
-		v->blit(imageId, e.e.at(curEnt).getX(), e.e.at(curEnt).getY(), e.e.at(curEnt).getH(), e.e.at(curEnt).getW());
+		if (e.e.at(curEnt).isVisable) {
+			v->blit(imageId, e.e.at(curEnt).getX(), e.e.at(curEnt).getY(), e.e.at(curEnt).getH(), e.e.at(curEnt).getW());
+		}
 		curEnt++;
 	}
 	v->updateScreen();
@@ -63,7 +65,7 @@ void game::updateScreen()
 
 
 }
-void game::createEntity(std::string name) 
+void game::createEntity(std::string name) //does this do anything?
 {
 	//if ( eList.find(name) != eList.end())
 	{
@@ -72,7 +74,7 @@ void game::createEntity(std::string name)
 
 }
 void game::maxFpsDelay()
-{
+{ //does this do anything anymore
 	float t = (float)frameCap.getTicks();
 	if (t < tpf) 
 	{
@@ -142,6 +144,30 @@ void game::makeGAMEEntities()
 	e.makeEntity("eyes", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 6);
 	e.e.at(e.getVecPos("eyes")).isMask = true;
 	e.e.at(e.getVecPos("eyes")).theColor = tempCol;
+
+	///eyesBlink0
+	tempCol = { 10, 25, 10, 200 };
+	tmp = v->generateFromMask("images/mask/slimeEyes1.png", tempCol);
+	tmpI = v->imageById(tmp);
+	e.makeEntity("eyes1", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 6);
+	e.e.at(e.getVecPos("eyes1")).isMask = true;
+	e.e.at(e.getVecPos("eyes1")).theColor = tempCol;
+
+	///eyesOpen
+	tempCol = { 10, 25, 10, 200 };
+	tmp = v->generateFromMask("images/mask/slimeEyes2.png", tempCol);
+	tmpI = v->imageById(tmp);
+	e.makeEntity("eyes2", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 6);
+	e.e.at(e.getVecPos("eyes2")).isMask = true;
+	e.e.at(e.getVecPos("eyes2")).theColor = tempCol;
+
+	///eyesOpen
+	tempCol = { 10, 25, 10, 200 };
+	tmp = v->generateFromMask("images/mask/slimeEyes3.png", tempCol);
+	tmpI = v->imageById(tmp);
+	e.makeEntity("eyesSad", tmp, 100, 100, tmpI->theRect.h, tmpI->theRect.w, 6);
+	e.e.at(e.getVecPos("eyesSad")).isMask = true;
+	e.e.at(e.getVecPos("eyesSad")).theColor = tempCol;
 
 	// */ //e.e["eyes"].isMask = true;
 	//e.e["eyes"].theColor = tempCol;
