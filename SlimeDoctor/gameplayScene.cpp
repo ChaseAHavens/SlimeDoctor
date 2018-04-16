@@ -7,42 +7,32 @@ gameplayScene::gameplayScene() :
 	slimeTime.start();
 }
 gameplayScene::~gameplayScene()
-{}
-
-
-
+{
+}
 bool gameplayScene::getE(entities* ent)
 {
 	e = ent;
 	return (e != NULL);
 }
-
-
 void gameplayScene::setup()
 {
 	setupSlime();
-
 }
 void gameplayScene::step(float delta)
 {
 	animateBounce();
 	animateBlink();
 }
-
 float gameplayScene::slimeBounceH()
 {
 	return sin((float)slimeTime.getTicks()/100.f)*slimeBounceAmount;
 }
-
 float gameplayScene::slimeBounceW()
 {
-
 	return -sin((float)slimeTime.getTicks()/100.f)*slimeBounceAmount;
 }
-
 void gameplayScene::setupSlime()
-{
-	
+{	
 	shell =		&e->get("shell");
 	inner =		&e->get("inner");
 	eyes =		&e->get("eyes");
@@ -59,7 +49,6 @@ void gameplayScene::setupSlime()
 }
 void gameplayScene::animateBounce()
 {
-	//*
 	float squishH = slimeH + slimeBounceH();
 	float squishW = slimeW + slimeBounceW();
 	float offsetX = slimeX + slimeBounceH() / 2.f;
@@ -71,7 +60,7 @@ void gameplayScene::animateBounce()
 	eyesSad->	setSize(squishH, squishW);
 	shine->		setSize(squishH, squishW);
 	shell->		setSize(squishH, squishW);
-	//*///
+	
 	shell->		setPos(offsetX, offsetY);
 	inner->		setPos(offsetX, offsetY);
 	eyes->		setPos(offsetX, offsetY);
@@ -79,7 +68,6 @@ void gameplayScene::animateBounce()
 	eyes2->		setPos(offsetX, offsetY);
 	eyesSad->	setPos(offsetX, offsetY);
 	shine->		setPos(offsetX, offsetY);
-	//*/
 }
 void gameplayScene::animateBlink()
 {
@@ -120,21 +108,18 @@ void gameplayScene::slimeChangeEyes()
 		eyes1->		setVisable(false);
 		eyes2->		setVisable(false);
 		eyesSad->	setVisable(false);
-
 		break;
 	case BLINK1:
 		eyes->		setVisable(false);
 		eyes1->		setVisable(true);
 		eyes2->		setVisable(false);
 		eyesSad->	setVisable(false);
-
 		break;
 	case BLINK2:
 		eyes->		setVisable(false);
 		eyes1->		setVisable(false);
 		eyes2->		setVisable(true);
 		eyesSad->	setVisable(false);
-
 		break;
 	case SAD:
 		eyes->		setVisable(false);
@@ -143,5 +128,4 @@ void gameplayScene::slimeChangeEyes()
 		eyesSad->	setVisable(true);
 		break;
 	}
-
 }

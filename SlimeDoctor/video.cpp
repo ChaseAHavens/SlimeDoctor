@@ -19,7 +19,7 @@ video::video(int h, int w, std::string title):
 		}
 		else
 		{
-			theRenderer = SDL_CreateRenderer(theWindow, -1, SDL_RENDERER_ACCELERATED);
+			theRenderer = SDL_CreateRenderer(theWindow, -1, SDL_RENDERER_PRESENTVSYNC);
 			if (theRenderer == NULL)
 			{
 				std::cout << "Renderer error: " << SDL_GetError() << std::endl;
@@ -49,6 +49,11 @@ video::~video()
 	theWindow = NULL;
 	///TODO: free all images in map
 
+}
+void video::setTitle(std::string name)
+{
+	theTitle = name;
+	SDL_SetWindowTitle(theWindow, name.c_str());
 }
 int video::addImage(std::string file)
 {
@@ -115,9 +120,7 @@ int video::generateFromMask(std::string file, SDL_Color col)
 	}
 	else
 	{
-		//formattedSurface = SDL_ConvertSurface(loadingSurface, theScreen->format, NULL);
 		SDL_SetTextureBlendMode(formattedTexture, SDL_BLENDMODE_BLEND);
-		//SDL_SetTextureAlphaMod(formattedTexture, col.a);
 		formattedTexture = SDL_CreateTextureFromSurface(theRenderer, loadingSurface);
 		if (formattedTexture == NULL)
 		{
@@ -133,7 +136,6 @@ int video::generateFromMask(std::string file, SDL_Color col)
 			nextIdNumber++;
 		}
 	}
-
 	return idNumber;
 }
 void video::blit(int imageId, int x, int y, int h, int w)
@@ -153,7 +155,6 @@ void video::blit(int imageId, int x, int y, int h, int w)
 		SDL_SetTextureBlendMode(tmp->theImage, SDL_BLENDMODE_BLEND);
 		SDL_RenderCopy(theRenderer, tmp->theImage, NULL, &tmpR);
 	}
-	
 }
 void video::updateScreen()
 {
@@ -167,13 +168,5 @@ image* video::imageById(int id)
 	if (theImages.find(id) != theImages.end()) { //check to see if id exists, checking with [] would create item with that key
 		returnImage = &theImages[id];
 	}
-	/*	for (int i = 0; i < theImages.size();i++)
-	{
-		if (theImages[i].idNumber == id);
-		{
-			returnSurf = theImages[i].theImage;
-			break;
-		}
-	}*/
 	return returnImage;
 }

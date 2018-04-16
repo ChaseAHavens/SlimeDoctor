@@ -7,10 +7,9 @@
 #include "timer.h"
 #include <vector>
 #include <string>
+#include <sstream>
 #include "gameplayScene.h"
 
-
-///TODO: move video class into game class to be able to easily change resolution
 class game
 {
 public:
@@ -36,7 +35,8 @@ public:
 		QUIT
 	};
 
-
+	void updateFPS();
+	int getFPS();
 	void input();
 	bool quit;
 private:
@@ -50,6 +50,8 @@ private:
 	//std::vector<entity> eList;
 	gameMode g;
 	timer deltaTimer;
+	timer fpsTimer;
+	float currentFPS;
 	const float tpf;
 	const Uint32 fps;
 };

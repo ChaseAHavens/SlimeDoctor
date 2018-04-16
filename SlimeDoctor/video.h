@@ -20,6 +20,8 @@ public:
 	SDL_Renderer* theRenderer;
 	SDL_Window* theWindow;
 
+	void setTitle(std::string name);
+
 	int addImage(std::string file);
 	int generateFromMask(std::string file, SDL_Color col);
 	image* imageById(int id);

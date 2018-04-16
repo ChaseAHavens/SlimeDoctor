@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -127,6 +127,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="gameplayScene.cpp" />
     <ClCompile Include="image.cpp" />
+    <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="video.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="gameplayScene.h" />
     <ClInclude Include="image.h" />
+    <ClInclude Include="input.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="video.h" />
   </ItemGroup>

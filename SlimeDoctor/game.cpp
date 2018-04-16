@@ -4,6 +4,7 @@ game::game() :
 	fps(60), tpf(1000.0f/60), g(STARTUP), quit(false)
 {
 	deltaTimer.start();
+	fpsTimer.start();
 }
 game::~game()
 {}
@@ -53,6 +54,11 @@ void game::updateScreen()
 		curEnt++;
 	}
 	v->updateScreen();
+	updateFPS();
+	std::stringstream ss;
+	ss.clear();
+	ss << getFPS();
+	v->setTitle(ss.str() );
 }
 void game::createEntity(std::string name) //does this do anything?
 {
@@ -62,8 +68,6 @@ void game::createEntity(std::string name) //does this do anything?
 	}
 
 }
-
-
 float game::deltaTime()
 {
 	float delta = deltaTimer.getTicks() / 1000.f;
@@ -140,6 +144,21 @@ void game::makeGAMEEntities()
 	tmpEnt = e.get("shine");
 	tmpEnt.setVisable(true).setMask(true).setColor(tempCol);	
 }
+
+void game::updateFPS()
+{
+	currentFPS = 1.0f / (fpsTimer.getTicks() / 1000.0f);
+	if (currentFPS > 2000000)
+	{
+		currentFPS = 0;
+	}
+	fpsTimer.start();
+}
+int game::getFPS()
+{
+	return (int)currentFPS;
+}
+
 void game::input()
 {
 	while (SDL_PollEvent(&event) != 0)
